@@ -1,0 +1,15 @@
+[test-run]
+training_dir=../data/intent/
+training_list=../data/intent/workspace_intent_kw
+testing_dir=../data/intent_test2/
+testing_list=../data/intent_test2/workspace_list
+w2vfile=/home/datasets/NLP_datasets/Glove/glove.6B.100d.txt
+softmax_factor=10.0
+alpha_pos=1.0
+alpha_neg=1.0
+alpha_indomain=1.0
+ood_example_size=1
+ood_threshold=0.6
+ood_threshold_margin=0.2
+hidden_size=100
+min_ss_size=100
