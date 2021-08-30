@@ -26,6 +26,30 @@ mkdir data
 
 ## Data Preparation
 
+Our preprocessed data can be downloaded at
+
+Amazon data (sentiment classification):
+AI conversational data (intent classification):
+
+Unzip the above compressed files into ~/data/
+
+```
+Amazon
+│
+└───train
+│   │   workspace_list
+│   │   workspace_list_kw
+│   │   ...
+│   
+└───dev
+│   │   workspace_list
+│   │   
+│   │   ...
+└───test
+    │   workspace_list
+    │   
+```
+
 ## Training
 
 ## Evaluation
