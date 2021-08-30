@@ -81,8 +81,7 @@ IntentDat
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
 ```script/extract_keywords.sh```<br />
-Note that in the above script we utilize, TfIdf keyword extractor. <br />
-If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), follow structure exemplified by Kws_xxx.train. <br />
+Note that in the above script we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
 
