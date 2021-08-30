@@ -27,7 +27,7 @@ pip install -r requirement.txt
 
 Our preprocessed data can be downloaded at
 
-Amazon data (sentiment classification):
+Amazon data (sentiment classification):<br />
 AI conversational data (intent classification):
 
 Unzip the above compressed files into ~/data/
