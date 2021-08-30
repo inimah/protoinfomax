@@ -6,7 +6,7 @@ pytorch implementation
 | Table of Contents |
 |-|
 | [Setup](#setup)|
-| [Data Preparation](#prepare)|
+| [Data Preparation](#data)|
 | [Training](#training)|
 | [Evaluation](#evaluation)|
 | [Result](#result)|
@@ -23,7 +23,7 @@ conda install cudatoolkit=10.1 -c pytorch -n protoinfomax_env
 pip install -r requirement.txt
 ```
 
-## Data Preparation
+## Data 
 
 Our preprocessed data can be downloaded at
 
