@@ -95,12 +95,7 @@ Note that in the above script we utilize TfIdf keyword extractor. If you want to
 Please cite our paper if you find this repo useful :)
 
 ```BibTeX
-@inproceedings{nimah2021protoinfomax,
-  title={ProtoInfoMax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection},
-  author={Nimah, Iftitahu and Fang, Meng and Menkovski, Vlado and Pechenizkiy, Mykola},
-  booktitle={Findings of the Association for Computational Linguistics: EMNLP 2021},
-  year={2021}
-}
+to-be-added
 ```
 
 ----
