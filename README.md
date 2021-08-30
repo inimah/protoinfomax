@@ -14,14 +14,13 @@ pytorch implementation
 ## Setup
 ### Dependencies
 
-Install other dependecies:
+Install libraries and dependecies:
 ```bash
 conda create -n protoinfomax_env python=3.6
 conda activate protoinfomax_env
 conda install cudatoolkit=10.1 -c pytorch -n protoinfomax_env 
 
 pip install -r requirement.txt
-mkdir data
 ```
 
 ## Data Preparation
@@ -37,7 +36,7 @@ Unzip the above compressed files into ~/data/
 ### Amazon data (Sentiment Classification)
 
 ```
-Amazon
+AmazonDat
 │
 └───train
 │   │   workspace_list
@@ -54,6 +53,31 @@ Amazon
 ```
 
 ### AI Conversation data (Intent Classification)
+
+```
+IntentDat
+│
+└───train
+│   │   workspace_list
+│   │   workspace_list_kw
+│   │   Assistant.train
+│   │   Atis.train
+│   │   ...
+│   │   Kws_Assistant.train
+│   │   Kws_Atis.train
+│   │   ...
+│   
+└───dev
+│   │   workspace_list
+│   │   Alarm.train
+│   │   Alarm.test
+│   │   ...
+└───test
+    │   workspace_list
+    │   Balance.train
+    │   Balance.test
+    │   ...
+```
 
 ## Training
 
