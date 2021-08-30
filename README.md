@@ -27,9 +27,8 @@ pip install -r requirement.txt
 
 Our preprocessed data can be downloaded at
 
-Amazon data (sentiment classification):
-
-AI conversational data (intent classification):
+Amazon data (sentiment classification):\n
+AI conversational data (intent classification):\n
 
 Unzip the above compressed files into ~/data/
 
@@ -79,11 +78,11 @@ IntentDat
     │   ...
 ```
 
-If you want to use your own data, please follow the data structure exemplified in the above data.
-For preparing your own data with keyword auxiliaries, please run the following script on your data.
-```script/extract_keywords.sh```
-Note that in the above script we utilize, TfIdf keyword extractor. 
-If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), follow structure exemplified by Kws_xxx.train.
+If you want to use your own data, please follow the data structure exemplified in the above data.\n
+For preparing your own data with keyword auxiliaries, please run the following script on your data.\n
+```script/extract_keywords.sh```\n
+Note that in the above script we utilize, TfIdf keyword extractor. \n
+If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), follow structure exemplified by Kws_xxx.train.\n
 
 ## Training
 
