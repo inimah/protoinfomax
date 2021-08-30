@@ -41,15 +41,23 @@ AmazonDat
 └───train
 │   │   workspace_list
 │   │   workspace_list_kw
+│   │   Apps_for_Android.train
+│   │   Books.train
+│   │   ...
+│   │   Kws_Apps_for_Android.train
+│   │   Kws_Books.train
 │   │   ...
 │   
 └───dev
 │   │   workspace_list
-│   │   
+│   │   Automotive.train
+│   │   Automotive.test
 │   │   ...
 └───test
     │   workspace_list
-    │   
+    │   Digital_Music.train
+    │   Digital_Music.test
+    │   ...
 ```
 
 ### AI Conversation data (Intent Classification)
@@ -82,7 +90,7 @@ IntentDat
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
 ```script/extract_keywords.sh```<br />
-Note that in the above script we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), follow structure exemplified by Kws_xxx.train. <br />
+Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
 
