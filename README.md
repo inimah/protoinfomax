@@ -29,9 +29,12 @@ mkdir data
 Our preprocessed data can be downloaded at
 
 Amazon data (sentiment classification):
+
 AI conversational data (intent classification):
 
 Unzip the above compressed files into ~/data/
+
+### Amazon data (Sentiment Classification)
 
 ```
 Amazon
@@ -49,6 +52,8 @@ Amazon
     │   workspace_list
     │   
 ```
+
+### AI Conversation data (Intent Classification)
 
 ## Training
 
