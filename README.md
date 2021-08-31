@@ -117,6 +117,11 @@ Note that in the above script, we utilize TfIdf keyword extractor. If you want t
 
 ## Training
 
+| Model                                                |  Benchmark               |   Script                                                     |
+| ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
+| ProtoNet                                             | Sentiment Classification |  train/train_protonet_sentiment.sh                           |
+
+
 ## Evaluation
 
 ## Result
