@@ -1,10 +1,10 @@
 [test-run]
-mnet_training_dir=../data/train/
-mnet_training_list=../data/train/workspace_list
-mnet_dev_dir=../data/dev/
-mnet_dev_list=../data/dev/workspace_list
-testing_dir=../data/test/
-testing_list=../data/test/workspace_list
+mnet_training_dir=../data/AmazonDat/train/
+mnet_training_list=../data/AmazonDat/train/workspace_list
+mnet_dev_dir=../data/AmazonDat/dev/
+mnet_dev_list=../data/AmazonDat/dev/workspace_list
+testing_dir=../data/AmazonDat/test/
+testing_list=../data/AmazonDat/test/workspace_list
 w2vfile=/home/datasets/NLP_datasets/Glove/glove.6B.100d.txt
 softmax_factor=10.0
 alpha_pos=1.0

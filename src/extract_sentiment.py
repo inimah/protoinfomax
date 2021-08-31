@@ -27,7 +27,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 
 import nltk
-nltk.data.path.append(NLTK_PATH)
+nltk.data.path.append("~/nltk_data/")
 import re
 import string
 
@@ -135,112 +135,87 @@ def extract_topn_from_vector(feature_names, sorted_items, topn=10):
     return results
 
 
-def get_per_domain(PATH, domain):
 
-    #Apps_for_Android.train
-
-    xdat = []
-    ydat = []
-
-    print("Processing domain ...", domain)
-    sys.stdout.flush()
-    with open(PATH+domain) as f:
-        for line in f:
-            xdat.append(line.split('\t')[0])
-            ydat.append(line.split('\t')[1][0])
-
-    clean_xdat = []
-    for txt in xdat:
-        txt = cleaning_text(txt)
-        clean_xdat.append(txt)
-
-    print("len clean_xdat:", len(clean_xdat))
-    sys.stdout.flush()
-    print("len ydat:", len(ydat))
-    sys.stdout.flush()
-
-
-    return clean_xdat, ydat
-
-def get_all_data(PATH):
+def get_all_data():
 
     xdat = []
+    PATH = '~/data/AmazonDat/'
 
     print("Processing Apps_for_Android ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Apps_for_Android.train') as f:
+    with open(PATH+'train/Apps_for_Android.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Beauty ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Beauty.train') as f:
+    with open(PATH+'train/Beauty.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Books ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Books.train') as f:
+    with open(PATH+'train/Books.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing CDs_and_Vinyl ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/CDs_and_Vinyl.train') as f:
+    with open(PATH+'train/CDs_and_Vinyl.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Cell_Phones_and_Accessories ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Cell_Phones_and_Accessories.train') as f:
+    with open(PATH+'train/Cell_Phones_and_Accessories.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Clothing_Shoes_and_Jewelry ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Clothing_Shoes_and_Jewelry.train') as f:
+    with open(PATH+'train/Clothing_Shoes_and_Jewelry.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Electronics ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Electronics.train') as f:
+    with open(PATH+'train/Electronics.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Health_and_Personal_Care ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Health_and_Personal_Care.train') as f:
+    with open(PATH+'train/Health_and_Personal_Care.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Home_and_Kitchen ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Home_and_Kitchen.train') as f:
+    with open(PATH+'train/Home_and_Kitchen.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
             
     print("Processing Kindle_Store ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Kindle_Store.train') as f:
+    with open(PATH+'train/Kindle_Store.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Movies_and_TV ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Movies_and_TV.train') as f:
+    with open(PATH+'train/Movies_and_TV.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Office_Products ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Office_Products.train') as f:
+    with open(PATH+'train/Office_Products.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
     print("Processing Sports_and_Outdoors ...")
     sys.stdout.flush()
-    with open(PATH+'data/train/Sports_and_Outdoors.train') as f:
+    with open(PATH+'train/Sports_and_Outdoors.train') as f:
         for line in f:
             xdat.append(line.split('\t')[0])
 
@@ -249,29 +224,25 @@ def get_all_data(PATH):
         txt = cleaning_text(txt)
         clean_xdat.append(txt)
 
-    print("len clean_xdat:", len(clean_xdat))
-
 
     return clean_xdat
 
-def training_w2v(data, FASTTEXT_PATH, PATH):
+def training_w2v(data):
 
     print("Training Word Embeddings...")
 
 
-    model = load_facebook_model(FASTTEXT_PATH + 'cc.en.100.bin')
+    model = load_facebook_model('~/embeddings/cc.en.100.bin')
 
     oldmodel = deepcopy(model)
 
     data = [t.split() for t in data]
 
     n_sents = len(data)
-    print("n_sents:", n_sents)
-    sys.stdout.flush()
-
+   
     model.build_vocab(data, update=True)
     model.train(data, total_examples=n_sents, epochs=20)
-    model.save(PATH + 'w2v_fasttext_sentiment.model')
+    model.save('~/embeddings/w2v_fasttext_sentiment.model')
 
     for m in ['oldmodel', 'model']:
         print('The vocabulary size of the w2v_fasttext_cls', m, 'is', len(eval(m).wv.vocab))
@@ -285,23 +256,11 @@ def load_w2v(PATH):
     word_vecs_new = []
     zeros_init = [float(0.)] * 100
 
-    model = Word2Vec.load(PATH+'w2v_fasttext_sentiment.model')
+    model = Word2Vec.load('~/embeddings/w2v_fasttext_sentiment.model')
     vocab = list(model.wv.vocab)
     word_vecs = model.wv.vectors
     w2v = model.wv
 
-    print("len vocab:", len(vocab))
-    sys.stdout.flush()
-    print("vocab", vocab[:50])
-    sys.stdout.flush()
-    print("word_vecs shape:", word_vecs.shape)
-    sys.stdout.flush()
-
-    print("</s> in vocab?", '</s>' in vocab)
-    sys.stdout.flush()
-
-    print("<unk> in vocab?", '<unk>' in vocab)
-    sys.stdout.flush()
 
     if '</s>' in vocab:
         idx = vocab.index('</s>')
@@ -323,11 +282,30 @@ def load_w2v(PATH):
 
     word_vecs_new = np.array(word_vecs_new)
 
-    print("len vocab after OOV:", len(vocab_new))
-    print("word_vecs shape after OOV:", word_vecs_new.shape)
-
     return vocab_new, word_vecs_new
 
+
+
+def get_per_domain(PATH, domain):
+
+    #Apps_for_Android.train
+
+    xdat = []
+    ydat = []
+
+    print("Processing domain ...", domain)
+    sys.stdout.flush()
+    with open(PATH+domain) as f:
+        for line in f:
+            xdat.append(line.split('\t')[0])
+            ydat.append(line.split('\t')[1][0])
+
+    clean_xdat = []
+    for txt in xdat:
+        txt = cleaning_text(txt)
+        clean_xdat.append(txt)
+
+    return clean_xdat, ydat
 
 def extract_kws(PATH, domain, params):
 
@@ -387,19 +365,15 @@ def extract_kws(PATH, domain, params):
     base=os.path.basename(path)
     fn = os.path.splitext(base)[0]
 
-    np.savetxt(PATH+'data/train/Kws_%s.train'%fn, df.values, fmt='%s', delimiter='\t')
-
+    np.savetxt('~/data/Amazondat/train/Kws_%s.train'%fn, df.values, fmt='%s', delimiter='\t')
+Amazondat/
 
 
 
 if __name__ == '__main__':
 
-    EBD_PATH = HOME_DIR+'/embeddings/'
-    RSL_PATH= HOME_DIR+'/results/'
 
-    MAIN_PATH = HOME_DIR
-
-    parser = argparse.ArgumentParser(description="Extracting Keywords for ProtoInfoMax++...")
+    parser = argparse.ArgumentParser(description="Extracting Keywords for ProtoInfoMax++ from sentiment dataset ...")
     parser.add_argument('-config', help="path to configuration file", 
                         default="./config")
     parser.add_argument('-section', help="the section name of the experiment")
@@ -418,17 +392,17 @@ if __name__ == '__main__':
     print('Parameters:', params)
     sys.stdout.flush()
 
-    data = get_all_data(MAIN_PATH)
-    save_pickle(MAIN_PATH, 'data/cls_traindat.pkl', data)
+    data = get_all_data()
+    save_pickle('./', 'data/sentiment_traindat.pkl', data)
     
     # Continue training word2vec on sentiment data
-    training_w2v(data, FASTTEXT_PATH, EBD_PATH)
+    training_w2v(data)
 
-    voc, w2v = load_w2v(MAIN_PATH)
+    voc, w2v = load_w2v()
 
     idx2word = dict([(i, voc[i]) for i in range(len(voc))])
     word2idx = dict([(v,k) for k,v in idx2word.items()])
-    save_pickle(EBD_PATH, 'dict_idx2word_sentiment.pkl', (word2idx, idx2word))
+    save_pickle('~/data/dict_idx2word_sentiment.pkl', (word2idx, idx2word))
 
 
     params['vocabulary'] = word2idx
@@ -439,7 +413,7 @@ if __name__ == '__main__':
 
     # Keyword extraction
     
-    stopwords=get_stop_words(MAIN_PATH+"data/stopwords.txt")
+    stopwords=get_stop_words("~/data/stopwords.txt")
 
     
     cv=CountVectorizer(max_df=0.85,stop_words=stopwords)
@@ -451,7 +425,7 @@ if __name__ == '__main__':
     tfidf_transformer=TfidfTransformer(smooth_idf=True,use_idf=True)
     tfidf_transformer.fit(word_count_vector)
 
-    save_pickle(EBD_PATH, 'tfidf_sparse_vec_cls.pkl', (cv, word_count_vector, tfidf_transformer))
+    save_pickle('~/embeddings/tfidf_sparse_vec_cls.pkl', (cv, word_count_vector, tfidf_transformer))
 
 
     params["cv"] = cv
@@ -460,6 +434,6 @@ if __name__ == '__main__':
     domains = ['Apps_for_Android.train', 'Beauty.train', 'CDs_and_Vinyl.train', 'Books.train', 'Cell_Phones_and_Accessories.train', 'Clothing_Shoes_and_Jewelry.train', 'Electronics.train', 'Health_and_Personal_Care.train', 'Home_and_Kitchen.train', 'Kindle_Store.train', 'Movies_and_TV.train', 'Office_Products.train', 'Sports_and_Outdoors.train']
 
     for d in domains:
-        extract_kws(MAIN_PATH, 'data/train/'+d, params)
+        extract_kws('./', 'data/Amazondat/train/'+d, params)
   
       
