@@ -5,7 +5,7 @@ pytorch implementation
 
 | Table of Contents |
 |-|
-| [HowTo](#howto)|
+| [How To](#howto)|
 | [Setup](#setup)|
 | [Data](#data)|
 | [Training](#training)|
@@ -13,7 +13,7 @@ pytorch implementation
 | [Result](#result)|
 | [Citation](#citation)|
 
-## How to
+## HowTo
 1. Clone or download the current git repo
 2. Create directory ~/data/ ```mkdir -p data```
 3. Install dependencies
