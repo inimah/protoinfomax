@@ -50,8 +50,8 @@ Unzip the above compressed files into ~/data/
 AmazonDat
 │
 └───train
-│   │   workspace_list
-│   │   workspace_list_kw
+│   │   workspace_list                  #list of training domains or categories, read by batch iterator
+│   │   workspace_list_kw               #list for data with keyword auxiliaries: Kws_xxx.train
 │   │   Apps_for_Android.train
 │   │   Books.train
 │   │   ...
