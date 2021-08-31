@@ -18,10 +18,11 @@ A Pytorch implementation
 2. Create directory ~/data/ ```mkdir -p data```
 3. Install dependencies: [>>Setup](#setup)
 4. Download preprocessed data sets: [>>Data](#data)
-5. Run training script: [>>Training](#training)
-6. Run evaluation script: [>>Evaluation](#evaluation)
-7. Read log summary: [>>Result](#result)
-8. Additional: See notebooks for investigating model reliability
+5. Before running bash scripts (\*.sh) from our repo, do not forget to: <br>- Change the second line in the bash file into the path location where you installed anaconda or miniconda
+6. Run training script: [>>Training](#training)
+7. Run evaluation script: [>>Evaluation](#evaluation)
+8. Read log summary: [>>Result](#result)
+9. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
