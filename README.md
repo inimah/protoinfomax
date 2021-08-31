@@ -41,11 +41,13 @@ pip install -r requirement.txt
 Our preprocessed data can be downloaded at
 
 Amazon data (sentiment classification):[>>to-download](https://drive.google.com/file/d/1ETckW4TZQdNMqhFnuazgoamHqP_jM4FC/view?usp=sharing)<br />
-AI conversational data (intent classification):[>>to-download](https://drive.google.com/file/d/1TLjN4xuU3D18ZGGWDo0R8rZwQlXMz_pi/view?usp=sharing)
-FastText Pretrained Binary (English): 
-Finetuned FastText (our run on current data): 
+AI conversational data (intent classification):[>>to-download](https://drive.google.com/file/d/1TLjN4xuU3D18ZGGWDo0R8rZwQlXMz_pi/view?usp=sharing)<br />
 
 Unzip the above compressed files into ~/data/
+
+#### Word embeddings
+FastText Pretrained Binary (English): <br />
+Finetuned FastText (our run on current data): <br />
 
 ### Amazon data (Sentiment Classification)
 
