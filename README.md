@@ -17,10 +17,10 @@ pytorch implementation
 1. Clone or download the current git repo
 2. Create directory ~/data/ ```mkdir -p data```
 3. Install dependencies: [>>Setup](#setup)
-4. Download preprocessed data sets: [Data](#data)
-5. Run training script: [Training](#training)
-6. Run evaluation script: [Evaluation](#evaluation)
-7. Read log summary: [Result](#result)
+4. Download preprocessed data sets: [>>Data](#data)
+5. Run training script: [>>Training](#training)
+6. Run evaluation script: [>>Evaluation](#evaluation)
+7. Read log summary: [>>Result](#result)
 8. Additional: See notebooks for investigating model reliability
 
 ## Setup
