@@ -117,9 +117,16 @@ Note that in the above script, we utilize TfIdf keyword extractor. If you want t
 
 ## Training
 
-| Model                                                |  Benchmark               |   Script                                                     |
+| Model                                                |  Benchmark               |   Bash script                                                |
 | ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
 | ProtoNet                                             | Sentiment Classification |  train/train_protonet_sentiment.sh                           |
+| ProtoNet                                             | Intent Classification    |  train/train_protonet_intent.sh                              |
+| OProto                                               | Sentiment Classification |  train/train_oproto_sentiment.sh                             |
+| OProto                                               | Intent Classification    |  train/train_oproto_intent.sh                                |
+| ProtoInfoMax                                         | Sentiment Classification |  train/train_protoinfomax_sentiment.sh                       |
+| ProtoInfoMax                                         | Intent Classification    |  train/train_protoinfomax_intent.sh                          |
+| ProtoInfoMax++                                       | Sentiment Classification |  train/train_protoinfomax_kws_sentiment.sh                   |
+| ProtoInfoMax++                                       | Intent Classification    |  train/train_protoinfomax_kws_intent.sh                      |
 
 
 ## Evaluation
