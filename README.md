@@ -5,12 +5,23 @@ pytorch implementation
 
 | Table of Contents |
 |-|
+| [How To](#how to)|
 | [Setup](#setup)|
-| [Data Preparation](#data)|
+| [Data](#data)|
 | [Training](#training)|
 | [Evaluation](#evaluation)|
 | [Result](#result)|
 | [Citation](#citation)|
+
+## How to
+1. Clone or download the current git repo
+2. Create directory ~/data/ ```mkdir -p data```
+3. Install dependencies
+4. Download preprocessed data sets
+5. Run training script
+6. Run evaluation script
+7. Read log summary
+8. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
@@ -86,6 +97,8 @@ IntentDat
     │   Balance.test
     │   ...
 ```
+
+### Custom Data
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
