@@ -1,16 +1,27 @@
 # ProtoInfoMax
 Code and Data sets for the EMNLP-2021-Findings Paper "ProtoInfoMax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection"
 
-pytorch implementation
+A Pytorch implementation
 
 | Table of Contents |
 |-|
+| [How To](#howto)|
 | [Setup](#setup)|
-| [Data Preparation](#data)|
+| [Data](#data)|
 | [Training](#training)|
 | [Evaluation](#evaluation)|
 | [Result](#result)|
 | [Citation](#citation)|
+
+## HowTo
+1. Clone or download the current git repo
+2. Create directory ~/data/ ```mkdir -p data```
+3. Install dependencies: [>>Setup](#setup)
+4. Download preprocessed data sets: [>>Data](#data)
+5. Run training script: [>>Training](#training)
+6. Run evaluation script: [>>Evaluation](#evaluation)
+7. Read log summary: [>>Result](#result)
+8. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
@@ -86,6 +97,8 @@ IntentDat
     │   Balance.test
     │   ...
 ```
+
+### Custom Data
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
