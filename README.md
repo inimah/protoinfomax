@@ -131,6 +131,17 @@ Note that in the above script, we utilize TfIdf keyword extractor. If you want t
 
 ## Evaluation
 
+| Model                                                |  Benchmark               |   Bash script                                                |
+| ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
+| ProtoNet                                             | Sentiment Classification |  eval/eval_protonet_sentiment.sh                           |
+| ProtoNet                                             | Intent Classification    |  eval/eval_protonet_intent.sh                              |
+| OProto                                               | Sentiment Classification |  eval/eval_oproto_sentiment.sh                             |
+| OProto                                               | Intent Classification    |  eval/eval_oproto_intent.sh                                |
+| ProtoInfoMax                                         | Sentiment Classification |  eval/eval_protoinfomax_sentiment.sh                       |
+| ProtoInfoMax                                         | Intent Classification    |  eval/eval_protoinfomax_intent.sh                          |
+| ProtoInfoMax++                                       | Sentiment Classification |  eval/eval_protoinfomax_kws_sentiment.sh                   |
+| ProtoInfoMax++                                       | Intent Classification    |  eval/eval_protoinfomax_kws_intent.sh                      |
+
 ## Result
 
 ## Citation
