@@ -16,12 +16,14 @@ A Pytorch implementation
 ## HowTo
 1. Clone or download the current git repo
 2. Create directory ~/data/ ```mkdir -p data```
-3. Install dependencies: [>>Setup](#setup)
-4. Download preprocessed data sets: [>>Data](#data)
-5. Run training script: [>>Training](#training)
-6. Run evaluation script: [>>Evaluation](#evaluation)
-7. Read log summary: [>>Result](#result)
-8. Additional: See notebooks for investigating model reliability
+3. Create directory ~/embeddings/ ```mkdir -p embeddings```
+4. Install dependencies: [>>Setup](#setup)
+5. Download preprocessed data sets: [>>Data](#data)
+6. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
+7. Run training script: [>>Training](#training)
+8. Run evaluation script: [>>Evaluation](#evaluation)
+9. Read log summary: [>>Result](#result)
+10. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
@@ -39,10 +41,17 @@ pip install -r requirement.txt
 
 Our preprocessed data can be downloaded at
 
-Amazon data (sentiment classification):[to-download](https://drive.google.com/file/d/1ETckW4TZQdNMqhFnuazgoamHqP_jM4FC/view?usp=sharing)<br />
-AI conversational data (intent classification):[to-download](https://drive.google.com/file/d/1TLjN4xuU3D18ZGGWDo0R8rZwQlXMz_pi/view?usp=sharing)
+Amazon data (sentiment classification):[>>to-download](https://drive.google.com/file/d/1ETckW4TZQdNMqhFnuazgoamHqP_jM4FC/view?usp=sharing)<br />
+AI conversational data (intent classification):[>>to-download](https://drive.google.com/file/d/1TLjN4xuU3D18ZGGWDo0R8rZwQlXMz_pi/view?usp=sharing)<br />
 
 Unzip the above compressed files into ~/data/
+
+#### Word embeddings
+FastText Pretrained Binary (English): <br />
+Finetuned FastText on Sentiment: <br />
+Finetuned FastText on Intent: <br />
+
+Unzip the above compressed word embeddings into ~/embeddings/
 
 ### Amazon data (Sentiment Classification)
 
@@ -50,8 +59,8 @@ Unzip the above compressed files into ~/data/
 AmazonDat
 │
 └───train
-│   │   workspace_list
-│   │   workspace_list_kw
+│   │   workspace_list                  #list of training domains or categories, read by batch iterator
+│   │   workspace_list_kw               #list for data with keyword auxiliaries: Kws_xxx.train
 │   │   Apps_for_Android.train
 │   │   Books.train
 │   │   ...
@@ -102,7 +111,7 @@ IntentDat
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
-```script/extract_keywords.sh```<br />
+```prep/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
