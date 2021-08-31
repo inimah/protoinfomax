@@ -16,13 +16,14 @@ A Pytorch implementation
 ## HowTo
 1. Clone or download the current git repo
 2. Create directory ~/data/ ```mkdir -p data```
-3. Install dependencies: [>>Setup](#setup)
-4. Download preprocessed data sets: [>>Data](#data)
-5. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
-6. Run training script: [>>Training](#training)
-7. Run evaluation script: [>>Evaluation](#evaluation)
-8. Read log summary: [>>Result](#result)
-9. Additional: See notebooks for investigating model reliability
+3. Create directory ~/embeddings/ ```mkdir -p embeddings```
+4. Install dependencies: [>>Setup](#setup)
+5. Download preprocessed data sets: [>>Data](#data)
+6. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
+7. Run training script: [>>Training](#training)
+8. Run evaluation script: [>>Evaluation](#evaluation)
+9. Read log summary: [>>Result](#result)
+10. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
@@ -47,7 +48,10 @@ Unzip the above compressed files into ~/data/
 
 #### Word embeddings
 FastText Pretrained Binary (English): <br />
-Finetuned FastText (our run on current data): <br />
+Finetuned FastText on Sentiment: <br />
+Finetuned FastText on Intent: <br />
+
+Unzip the above compressed word embeddings into ~/embeddings/
 
 ### Amazon data (Sentiment Classification)
 
