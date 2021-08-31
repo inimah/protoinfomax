@@ -5,7 +5,7 @@ pytorch implementation
 
 | Table of Contents |
 |-|
-| [How To](#howto)|
+| [HowTo](#howto)|
 | [Setup](#setup)|
 | [Data](#data)|
 | [Training](#training)|
