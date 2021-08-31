@@ -1,6 +1,6 @@
 #!/bin/bash
 source HOME_DIR_INSTALLATION/miniconda3/etc/profile.d/conda.sh
-conda activate CONDA_ENV
+conda activate protoinfomax_env
 cd ../src
 
 # Evaluate OProto on intent classification K=100 N=1
