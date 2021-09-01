@@ -133,33 +133,33 @@ hidden_size=200 # dimension for Bidirectional GRU
 sampling_classes=2 # number of distinct supervision class in training data set (e.g. ``positive'' and ``negative'' sentiment labels)
 ```
 
-For running the scripts under different configuration set-ups, change parameters in ```config/config_sentiment``` and ```src\all_parameters_sentiment.py``` accordingly.
+For running the scripts under different configuration set-ups, change parameters in ```config/config_sentiment``` and ```src/all_parameters_sentiment.py``` accordingly.
 
 
 | Model                                                |  Benchmark               |   Bash script                                                |
 | ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
-| ProtoNet                                             | Sentiment Classification |  train/train_protonet_sentiment.sh                           |
-| ProtoNet                                             | Intent Classification    |  train/train_protonet_intent.sh                              |
-| OProto                                               | Sentiment Classification |  train/train_oproto_sentiment.sh                             |
-| OProto                                               | Intent Classification    |  train/train_oproto_intent.sh                                |
-| ProtoInfoMax                                         | Sentiment Classification |  train/train_protoinfomax_sentiment.sh                       |
-| ProtoInfoMax                                         | Intent Classification    |  train/train_protoinfomax_intent.sh                          |
-| ProtoInfoMax++                                       | Sentiment Classification |  train/train_protoinfomax_kws_sentiment.sh                   |
-| ProtoInfoMax++                                       | Intent Classification    |  train/train_protoinfomax_kws_intent.sh                      |
+| ProtoNet                                             | Sentiment Classification |  train_scripts/train_protonet_sentiment.sh                           |
+| ProtoNet                                             | Intent Classification    |  train_scripts/train_protonet_intent.sh                              |
+| OProto                                               | Sentiment Classification |  train_scripts/train_oproto_sentiment.sh                             |
+| OProto                                               | Intent Classification    |  train_scripts/train_oproto_intent.sh                                |
+| ProtoInfoMax                                         | Sentiment Classification |  train_scripts/train_protoinfomax_sentiment.sh                       |
+| ProtoInfoMax                                         | Intent Classification    |  train_scripts/train_protoinfomax_intent.sh                          |
+| ProtoInfoMax++                                       | Sentiment Classification |  train_scripts/train_protoinfomax_kws_sentiment.sh                   |
+| ProtoInfoMax++                                       | Intent Classification    |  train_scripts/train_protoinfomax_kws_intent.sh                      |
 
 
 ## Evaluation
 
 | Model                                                |  Benchmark               |   Bash script                                                |
 | ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
-| ProtoNet                                             | Sentiment Classification |  eval/eval_protonet_sentiment.sh                           |
-| ProtoNet                                             | Intent Classification    |  eval/eval_protonet_intent.sh                              |
-| OProto                                               | Sentiment Classification |  eval/eval_oproto_sentiment.sh                             |
-| OProto                                               | Intent Classification    |  eval/eval_oproto_intent.sh                                |
-| ProtoInfoMax                                         | Sentiment Classification |  eval/eval_protoinfomax_sentiment.sh                       |
-| ProtoInfoMax                                         | Intent Classification    |  eval/eval_protoinfomax_intent.sh                          |
-| ProtoInfoMax++                                       | Sentiment Classification |  eval/eval_protoinfomax_kws_sentiment.sh                   |
-| ProtoInfoMax++                                       | Intent Classification    |  eval/eval_protoinfomax_kws_intent.sh                      |
+| ProtoNet                                             | Sentiment Classification |  eval_scripts/eval_protonet_sentiment.sh                           |
+| ProtoNet                                             | Intent Classification    |  eval_scripts/eval_protonet_intent.sh                              |
+| OProto                                               | Sentiment Classification |  eval_scripts/eval_oproto_sentiment.sh                             |
+| OProto                                               | Intent Classification    |  eval_scripts/eval_oproto_intent.sh                                |
+| ProtoInfoMax                                         | Sentiment Classification |  eval_scripts/eval_protoinfomax_sentiment.sh                       |
+| ProtoInfoMax                                         | Intent Classification    |  eval_scripts/eval_protoinfomax_intent.sh                          |
+| ProtoInfoMax++                                       | Sentiment Classification |  eval_scripts/eval_protoinfomax_kws_sentiment.sh                   |
+| ProtoInfoMax++                                       | Intent Classification    |  eval_scripts/eval_protoinfomax_kws_intent.sh                      |
 
 ## Result
 
