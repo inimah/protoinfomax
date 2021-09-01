@@ -53,6 +53,15 @@ Finetuned FastText on Intent: [>>to-download](#)<br />
 
 Unzip the above compressed word embeddings into ~/embeddings/
 
+#### NLTK library
+Before running the script, make sure that you have downloaded nltk_data in your home directory. Our code is based on manual installation of nltk_data.
+See https://www.nltk.org/data.html ```Manual installation```.
+We use the following set up to call the required data or library. Change ```"~/nltk_data/"``` to the location where you downloaded nltk_data.
+```
+import nltk
+nltk.data.path.append("~/nltk_data/")
+```
+
 
 ### Amazon data (Sentiment Classification)
 
@@ -111,11 +120,21 @@ IntentDat
 ### Custom Data
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
-For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
+For preparing your own data with keyword auxiliaries, run the following script on your data.<br />
 ```prep/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
+
+By default, the following training and evaluation scripts are configured with:
+```
+K=100 # number of K-shot per training episode
+hidden_size=200 # dimension for Bidirectional GRU
+sampling_classes=2 # number of distinct supervision class in training data set (e.g. ``positive'' and ``negative'' sentiment labels)
+```
+
+For running the scripts under different configuration set-ups, change parameters in ```config/config_sentiment``` and ```src\all_parameters_sentiment.py``` accordingly.
+
 
 | Model                                                |  Benchmark               |   Bash script                                                |
 | ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
