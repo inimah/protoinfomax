@@ -28,7 +28,7 @@ from sklearn.feature_extraction.text import TfidfTransformer
 
 
 import nltk
-nltk.data.path.append(NLTK_PATH)
+nltk.data.path.append("~/nltk_data/")
 import re
 import string
 
@@ -79,29 +79,16 @@ def save_pickle(filepath, filename, data):
 
 
 
-def load_w2v(PATH):
+def load_w2v():
 
     vocab_new = []
     word_vecs_new = []
     zeros_init = [float(0.)] * 100
 
-    model = Word2Vec.load(PATH+'w2v_fasttext_sentiment.model')
+    model = Word2Vec.load('~/embeddings/w2v_fasttext_sentiment.model')
     vocab = list(model.wv.vocab)
     word_vecs = model.wv.vectors
     w2v = model.wv
-
-    print("len vocab:", len(vocab))
-    sys.stdout.flush()
-    print("vocab", vocab[:50])
-    sys.stdout.flush()
-    print("word_vecs shape:", word_vecs.shape)
-    sys.stdout.flush()
-
-    print("</s> in vocab?", '</s>' in vocab)
-    sys.stdout.flush()
-
-    print("<unk> in vocab?", '<unk>' in vocab)
-    sys.stdout.flush()
 
     if '</s>' in vocab:
         idx = vocab.index('</s>')
@@ -123,10 +110,6 @@ def load_w2v(PATH):
 
     word_vecs_new = np.array(word_vecs_new)
 
-    print("len vocab after OOV:", len(vocab_new))
-    sys.stdout.flush()
-    print("word_vecs shape after OOV:", word_vecs_new.shape)
-    sys.stdout.flush()
 
     return vocab_new, word_vecs_new
 
@@ -506,9 +489,8 @@ class AmazonLoader(Dataset):
 def eval_model(params, model, experiment, optimizer, epoch):
 
     TEST_FILE_INDEX = 2
-    DATA_PATH = MAIN_PATH+'/data'
-    RSL_PATH = MAIN_PATH+'/results'
-    EVAL_PATH = MAIN_PATH+'/eval'
+    DATA_PATH = '~/data'
+    RSL_PATH = '~/results'
 
     _, dev_data, test_data = read_pickle(DATA_PATH, 'tr_dev_te_sentiment.pkl')
 
@@ -558,15 +540,9 @@ def eval_model(params, model, experiment, optimizer, epoch):
            v_macro_avg_acc))
         sys.stdout.flush()
 
-        print("v_avg_conf_ood:  %.3f" %(v_avg_conf_ood))
-        sys.stdout.flush()
-        print("v_probs shape _imaxg_kw_:", v_probs.shape)
-        sys.stdout.flush()
-        print("v_gts shape _imaxg_kw_:", v_gts.shape)
-        sys.stdout.flush()
 
-        save_pickle(EVAL_PATH, 'metaval_oproto_cls_%s_%s.pkl'%(c,epoch), (v_macro_avg_eer, v_macro_avg_acc_ideal, v_macro_avg_acc))
-        save_pickle(EVAL_PATH, 'vprobs_gts_oproto_cls_%s_%s.pkl'%(c,epoch), (v_probs, v_gts))
+        save_pickle(RSL_PATH, 'metaval_oproto_cls_%s_%s.pkl'%(c,epoch), (v_macro_avg_eer, v_macro_avg_acc_ideal, v_macro_avg_acc))
+        save_pickle(RSL_PATH, 'vprobs_gts_oproto_cls_%s_%s.pkl'%(c,epoch), (v_probs, v_gts))
 
         v_eer_ += v_macro_avg_eer
         v_acc_ideal_ += v_macro_avg_acc_ideal
@@ -587,15 +563,9 @@ def eval_model(params, model, experiment, optimizer, epoch):
            t_macro_avg_acc))
         sys.stdout.flush()
 
-        print("t_avg_conf_ood:  %.3f" %(t_avg_conf_ood))
-        sys.stdout.flush()
-        print("t_probs shape _imaxg_kw_:", t_probs.shape)
-        sys.stdout.flush()
-        print("t_gts shape _imaxg_kw_:", t_gts.shape)
-        sys.stdout.flush()
 
-        save_pickle(EVAL_PATH, 'metatest_oproto_cls_%s_%s.pkl'%(c,epoch), (t_macro_avg_eer, t_macro_avg_acc_ideal, t_macro_avg_acc))
-        save_pickle(EVAL_PATH, 'tprobs_gts_oproto_cls_%s_%s.pkl'%(c,epoch), (t_probs, t_gts))
+        save_pickle(RSL_PATH, 'metatest_oproto_cls_%s_%s.pkl'%(c,epoch), (t_macro_avg_eer, t_macro_avg_acc_ideal, t_macro_avg_acc))
+        save_pickle(RSL_PATH, 'tprobs_gts_oproto_cls_%s_%s.pkl'%(c,epoch), (t_probs, t_gts))
 
        
         t_eer_ += t_macro_avg_eer
@@ -622,15 +592,8 @@ def eval_model(params, model, experiment, optimizer, epoch):
     v_probs_ = np.array(v_probs_)
     v_gts_ = np.array(v_gts_)
 
-    print("v_avg_conf_ood_:  %.3f" %(v_avg_conf_ood_))
-    sys.stdout.flush()
-    print("v_probs_ shape _imaxg_kw_:", v_probs_.shape)
-    sys.stdout.flush()
-    print("v_gts_ shape _imaxg_kw_:", v_gts_.shape)
-    sys.stdout.flush()
-
-    save_pickle(EVAL_PATH, 'metaval_oproto_cls_all_%s.pkl'%epoch, (v_eer_, v_acc_ideal_, v_acc_))
-    save_pickle(EVAL_PATH, 'vprobs_gts_oproto_cls_all_%s.pkl'%epoch, (v_probs_, v_gts_))
+    save_pickle(RSL_PATH, 'metaval_oproto_cls_all_%s.pkl'%epoch, (v_eer_, v_acc_ideal_, v_acc_))
+    save_pickle(RSL_PATH, 'vprobs_gts_oproto_cls_all_%s.pkl'%epoch, (v_probs_, v_gts_))
 
     t_eer_ /= len(test_set)
     t_acc_ideal_ /= len(test_set)
@@ -648,22 +611,11 @@ def eval_model(params, model, experiment, optimizer, epoch):
     t_probs_ = np.array(t_probs_)
     t_gts_ = np.array(t_gts_)
 
-    print("t_avg_conf_ood_:  %.3f" %(t_avg_conf_ood_))
-    sys.stdout.flush()
-    print("t_probs_ shape _imaxg_kw_:", t_probs_.shape)
-    sys.stdout.flush()
-    print("t_gts_ shape _imaxg_kw_:", t_gts_.shape)
-    sys.stdout.flush()
-
-    save_pickle(EVAL_PATH, 'metatest_oproto_cls_all_%s.pkl'%epoch, (t_eer_, t_acc_ideal_, t_acc_))
-    save_pickle(EVAL_PATH, 'tprobs_gts_oproto_cls_all_%s.pkl'%epoch, (t_probs_, t_gts_))
+    save_pickle(RSL_PATH, 'metatest_oproto_cls_all_%s.pkl'%epoch, (t_eer_, t_acc_ideal_, t_acc_))
+    save_pickle(RSL_PATH, 'tprobs_gts_oproto_cls_all_%s.pkl'%epoch, (t_probs_, t_gts_))
 
 if __name__ == '__main__':
 
-    EBD_PATH = HOME_DIR+'/embeddings/'
-    RSL_PATH= HOME_DIR+'/results/'
-
-    MAIN_PATH = HOME_DIR
 
     parser = argparse.ArgumentParser(description="Evaluate OProto on sentiment classification.")
     parser.add_argument('-config', help="path to configuration file", 
@@ -684,9 +636,9 @@ if __name__ == '__main__':
     print('Parameters:', params)
     sys.stdout.flush()
 
-    voc, w2v = load_w2v(MAIN_PATH)
+    voc, w2v = load_w2v()
     
-    word2idx, idx2word = read_pickle(EBD_PATH, 'dict_idx2word_sentiment.pkl')
+    word2idx, idx2word = read_pickle('~/data/', 'dict_idx2word_sentiment.pkl')
 
     params['vocabulary'] = word2idx
     params['voclist'] = idx2word
@@ -700,9 +652,9 @@ if __name__ == '__main__':
         optimizer = optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), 1e-3)
 
         if ep =='best':
-            checkpoint = torch.load(os.path.join(RSL_PATH, 'oproto_sentiment_k100.best.pth'), map_location=lambda storage, loc: storage)
+            checkpoint = torch.load(os.path.join('~/results/', 'oproto_sentiment_k100.best.pth'), map_location=lambda storage, loc: storage)
         else:
-            checkpoint = torch.load(os.path.join(RSL_PATH, 'oproto_sentiment_k100_%s.pth'%ep), map_location=lambda storage, loc: storage)
+            checkpoint = torch.load(os.path.join('~/results/', 'oproto_sentiment_k100_%s.pth'%ep), map_location=lambda storage, loc: storage)
 
         model.load_state_dict(checkpoint['state_dict'])
 
