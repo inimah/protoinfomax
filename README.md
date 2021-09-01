@@ -53,6 +53,15 @@ Finetuned FastText on Intent: [>>to-download](#)<br />
 
 Unzip the above compressed word embeddings into ~/embeddings/
 
+#### NLTK library
+Before running the script, make sure that you have downloaded nltk_data in your home directory. Our code is based on manual installation of nltk_data.
+See https://www.nltk.org/data.html ```Manual installation```.
+We use the following set up to call the required data or library. Change ```"~/nltk_data/"``` to the location where you downloaded nltk_data.
+```
+import nltk
+nltk.data.path.append("~/nltk_data/")
+```
+
 
 ### Amazon data (Sentiment Classification)
 
@@ -111,7 +120,7 @@ IntentDat
 ### Custom Data
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
-For preparing your own data with keyword auxiliaries, please run the following script on your data.<br />
+For preparing your own data with keyword auxiliaries, run the following script on your data.<br />
 ```prep/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
