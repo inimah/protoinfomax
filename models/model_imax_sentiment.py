@@ -162,7 +162,6 @@ class GRUEncoder(nn.Module):
 
         x_q_enc = torch.cat((x_q_enc, x_q_enc), dim=0)
         y_q = torch.cat((y_q, y_q), dim=0)
-        #print("x_q_enc size:", x_q_enc.size())
      
         bs = x_q_enc.size(0)
 
@@ -184,7 +183,6 @@ class GRUEncoder(nn.Module):
         bs_ood, _ = x_neg_enc.size(0), x_neg_enc.size(1)
 
         _logits = self._compute_cos(encoded_prototype.float(), x_neg_enc.float())
-        #print("_logits :", _logits)
         _logits = _logits.squeeze()
         _logits = _logits.unsqueeze(-1)
 

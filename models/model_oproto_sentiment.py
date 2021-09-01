@@ -191,10 +191,6 @@ class GRUEncoder(nn.Module):
         logloss_ontopic = self.ent_loss(logits_soft.to(device), labels.long().to(device))
         logloss_ontopic = logloss_ontopic.unsqueeze(-1)
 
-        if epoch%10 ==0:
-            print("logloss_ontopic :", logloss_ontopic)
-            sys.stdout.flush()
-
         # LOSS-2
        
         hingeloss_ontopic = torch.max(torch.tensor([0.0]), self.params['ood_threshold']
