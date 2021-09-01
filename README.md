@@ -126,14 +126,14 @@ Note that in the above script, we utilize TfIdf keyword extractor. If you want t
 
 ## Training
 
-By default, these script are configured with:
+By default, the following training and evaluation scripts are configured with:
 ```
 K=100 # number of K-shot per training episode
 hidden_size=200 # dimension for Bidirectional GRU
 sampling_classes=2 # number of distinc supervision class in training data set (e.g. ``positive'' and ``negative'' sentiment labels)
 ```
 
-For running under different configuration set-ups, change parameters in ```config/config_sentiment``` and ```src\all_parameters_sentiment.py``` accordingly.
+For running the scripts under different configuration set-ups, change parameters in ```config/config_sentiment``` and ```src\all_parameters_sentiment.py``` accordingly.
 
 
 | Model                                                |  Benchmark               |   Bash script                                                |
