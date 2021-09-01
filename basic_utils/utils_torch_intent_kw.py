@@ -2,7 +2,8 @@ import os
 import sys
 sys.path.append(os.getcwd())
 import math
-from workspace_cls import workspace
+#from workspace_intent_kw import workspace
+from workspace.workspace_intent_kw2 import workspace
 import numpy as np
 from utils.cal_methods import HistogramBinning, TemperatureScaling, evaluate, cal_results
 
@@ -30,7 +31,7 @@ def search_best_threshold(params, valid_output_info):
     if insize == 0:
         insize = insize+1
 
-    #print('offsize, insize', offsize, insize)
+    print('offsize, insize', offsize, insize)
     sorted_valid_output_info = sorted(valid_output_info, key=lambda x: x[2])
 
     accepted_oo = offsize
@@ -89,7 +90,7 @@ def get_results(params, output_info, threshold):
     #print("total_gt_ontopic_utt:", total_gt_ontopic_utt)
     #print("total_gt_offtopic_utt:", total_gt_offtopic_utt)
 
-    #print("threshold:", threshold)
+    print("threshold:", threshold)
 
     accepted_oo = 0.0
     rejected_in = 0.0
@@ -134,10 +135,9 @@ def get_results(params, output_info, threshold):
     ontopic_acc = correct_w_thr / total_gt_ontopic_utt
 
 
-    #print("eer, far, frr, ontopic_acc_ideal, ontopic_acc:", (eer, far, frr, ontopic_acc_ideal, ontopic_acc))
+    print("eer, far, frr, ontopic_acc_ideal, ontopic_acc:", (eer, far, frr, ontopic_acc_ideal, ontopic_acc))
 
     return eer, far, frr, ontopic_acc_ideal, ontopic_acc
-
 
 
 def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
@@ -153,7 +153,7 @@ def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
     print("Epoch-%s-%s" %(desc_str, epoch))
     sys.stdout.flush()
 
-    preds, all_dataset, probs, gts, avg_conf_ood = experiment.run_testing_epoch(result_data, idx2word)
+    preds, all_dataset, probs, gts, avg_conf_ood = experiment.run_testing_epoch(params, result_data)
     print(all_dataset[0])
 
     thesholds, _ = search_best_threshold(params, preds)
@@ -167,7 +167,7 @@ def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
               (test_eer, test_far, test_frr,
                test_ontopic_acc_ideal,
                test_ontopic_acc))
-
+    
     #n_probs = len(probs)
     #error, ece, mce, loss = cal_results(probs, gts)
 
@@ -183,7 +183,6 @@ def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
         t_macro_avg_acc_ideal, t_macro_avg_acc, preds, all_dataset, avg_conf_ood
 
 
-
 def compute_values_eval(params, experiment, result_data, desc_str):
 
     t_macro_avg_eer = 0.0
@@ -196,7 +195,7 @@ def compute_values_eval(params, experiment, result_data, desc_str):
 
 
     preds, all_dataset, probs, gts, avg_conf_ood = experiment.run_testing_epoch(params, result_data)
-    #print(all_dataset[0])
+    print(all_dataset[0])
 
     thesholds, _ = search_best_threshold(params, preds)
 
@@ -223,16 +222,15 @@ def compute_values_eval(params, experiment, result_data, desc_str):
 
     return t_macro_avg_eer, t_macro_avg_far, t_macro_avg_frr, \
         t_macro_avg_acc_ideal, t_macro_avg_acc, preds, all_dataset, avg_conf_ood, probs, gts
-
-def get_data(params, file_list, role):
+        
+def get_data(params, dir_, file_list, role):
     workspaces = []
     with open(file_list) as fi:
         i = 0
         for wid in fi:
             wid = wid.strip().split('\t')[0]
             print("workspace name:", wid)
-            sys.stdout.flush()
-            workspaces.append(workspace(wid, params, role))
+            workspaces.append(workspace(wid, params, dir_, role))
             print('get_data:', i)
             sys.stdout.flush()
             i += 1

@@ -10,14 +10,14 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.nn as nn
 import torch.optim as optim
-from workspace_cls import SENT_WORDID, SENT_LABELID, SENT_WORD_MASK, SENT_ORIGINAL_TXT
+from workspace.workspace_cls import SENT_WORDID, SENT_LABELID, SENT_WORD_MASK, SENT_ORIGINAL_TXT
 from torch.utils.data import Dataset, DataLoader, RandomSampler, SubsetRandomSampler
 import argparse
-from utils_torch_cls import compute_values, get_data, compute_values_eval
+from basic_utils.utils_torch_cls import compute_values, get_data, compute_values_eval
 from experiment_imax_sentiment import RunExperiment
-from workspace_cls import workspace
+from workspace.workspace_cls import workspace
 from models.model_imax_sentiment import *
-from vocabulary_cls import get_word_info
+from basic_utils.vocabulary_cls import get_word_info
 import math
 import random
 

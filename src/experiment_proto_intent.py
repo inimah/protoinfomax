@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 import torch.nn as nn
 import torch.optim as optim
-from workspace_intent import SENT_WORDID, SENT_LABELID, SENT_WORD_MASK, SENT_ORIGINAL_TXT
+from workspace.workspace_intent import SENT_WORDID, SENT_LABELID, SENT_WORD_MASK, SENT_ORIGINAL_TXT
 import numpy
 import numpy as np
 import random

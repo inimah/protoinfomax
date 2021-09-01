@@ -2,7 +2,7 @@ import os
 import sys
 sys.path.append(os.getcwd())
 import math
-from workspace_cls_kw import workspace
+from workspace.workspace_intent_rl import workspace
 import numpy as np
 from utils.cal_methods import HistogramBinning, TemperatureScaling, evaluate, cal_results
 
@@ -18,6 +18,8 @@ def search_best_threshold(params, valid_output_info):
     bestV = 1
     best_frr = 0
     best_far = 1
+
+    #print("params['offtopic_label']:", params['offtopic_label'])
 
     offsize = len([conf for pred, gt, conf in valid_output_info
                   if gt == params['offtopic_label']])
@@ -75,6 +77,10 @@ def get_results(params, output_info, threshold):
     #print('****************')
     #print('get_results funct.')
 
+    #print("params['offtopic_label']:", params['offtopic_label'])
+
+    #total_gt_ontopic_utt = len([gt for pred, gt, conf in output_info
+    #                           if gt != params['offtopic_label']])
     total_gt_ontopic_utt = len([gt for pred, gt, conf in output_info
                                if gt != params['offtopic_label']])
     total_gt_offtopic_utt = len(output_info) - total_gt_ontopic_utt
@@ -89,7 +95,7 @@ def get_results(params, output_info, threshold):
     #print("total_gt_ontopic_utt:", total_gt_ontopic_utt)
     #print("total_gt_offtopic_utt:", total_gt_offtopic_utt)
 
-    #print("threshold:", threshold)
+    print("threshold:", threshold)
 
     accepted_oo = 0.0
     rejected_in = 0.0
@@ -105,39 +111,36 @@ def get_results(params, output_info, threshold):
         else:
             pred1 = pred
 
-        #print("pred1:", pred1)
 
         if gt == params['offtopic_label'] and pred1 != gt:
             accepted_oo += 1
-            #print("if gt == params['offtopic_label'] and pred1 != gt")
+            # false negative
 
         elif gt != params['offtopic_label'] and pred1 == params['offtopic_label']:
             rejected_in += 1
-            #print("elif gt != params['offtopic_label'] and pred1 == params['offtopic_label']")
+            # false positive
+
         else:
             correct_domain_label += 1
-            #print("else")
+            # prediction == ground truth based on threshold (TN, TP)
 
         if gt != params['offtopic_label'] and pred == gt:
             correct_wo_thr += 1
-            #print("if gt != params['offtopic_label'] and pred == gt")
 
         if gt != params['offtopic_label'] and pred1 == gt:
             correct_w_thr += 1
-            #print("if gt != params['offtopic_label'] and pred1 == gt")
 
      
-    far = accepted_oo / total_gt_offtopic_utt
-    frr = rejected_in / total_gt_ontopic_utt
-    eer = 1 - correct_domain_label / len(output_info)
-    ontopic_acc_ideal = correct_wo_thr / total_gt_ontopic_utt
-    ontopic_acc = correct_w_thr / total_gt_ontopic_utt
+    far = accepted_oo / total_gt_offtopic_utt # FN/total negative
+    frr = rejected_in / total_gt_ontopic_utt # FP/total positive
+    eer = 1 - correct_domain_label / len(output_info) # (1-TN+TP)/total (FP+FN)/total
+    ontopic_acc_ideal = correct_wo_thr / total_gt_ontopic_utt # TP/total positive --> cannot be used for intent classification data because class/domain==1
+    ontopic_acc = correct_w_thr / total_gt_ontopic_utt #TP/total positive --> TP is decided based on threshold value
 
 
-    #print("eer, far, frr, ontopic_acc_ideal, ontopic_acc:", (eer, far, frr, ontopic_acc_ideal, ontopic_acc))
+    print("eer, far, frr, ontopic_acc_ideal, ontopic_acc:", (eer, far, frr, ontopic_acc_ideal, ontopic_acc))
 
     return eer, far, frr, ontopic_acc_ideal, ontopic_acc
-
 
 
 def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
@@ -167,7 +170,7 @@ def compute_values(params, experiment, result_data, epoch, idx2word, desc_str):
               (test_eer, test_far, test_frr,
                test_ontopic_acc_ideal,
                test_ontopic_acc))
-
+    
     #n_probs = len(probs)
     #error, ece, mce, loss = cal_results(probs, gts)
 
@@ -224,15 +227,14 @@ def compute_values_eval(params, experiment, result_data, desc_str):
     return t_macro_avg_eer, t_macro_avg_far, t_macro_avg_frr, \
         t_macro_avg_acc_ideal, t_macro_avg_acc, preds, all_dataset, avg_conf_ood, probs, gts
 
-def get_data(params, file_list, role):
+def get_data(params, dir_, file_list, role):
     workspaces = []
     with open(file_list) as fi:
         i = 0
         for wid in fi:
             wid = wid.strip().split('\t')[0]
             print("workspace name:", wid)
-            sys.stdout.flush()
-            workspaces.append(workspace(wid, params, role))
+            workspaces.append(workspace(wid, params, dir_, role))
             print('get_data:', i)
             sys.stdout.flush()
             i += 1
