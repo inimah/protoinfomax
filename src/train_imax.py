@@ -16,13 +16,13 @@ import argparse
 from utils_torch_cls import compute_values, get_data, compute_values_eval
 from experiment_imax_sentiment import RunExperiment
 from workspace_cls import workspace
-from model_imax_sentiment import *
+from models.model_imax_sentiment import *
 from vocabulary_cls import get_word_info
 import math
 import random
 
 import nltk
-nltk.data.path.append(NLTK_PATH)
+nltk.data.path.append("~/nltk_data/")
 import re
 import string
 
@@ -100,54 +100,17 @@ def cleaning_text(txt):
 
     return txt
 
-def get_per_domain(PATH, domain):
-
-
-    xdat = []
-    ydat = []
-
-    print("Processing domain ...", domain)
-    sys.stdout.flush()
-    
-    with open(PATH+domain) as f:
-        for line in f:
-            xdat.append(line.split('\t')[0])
-            ydat.append(line.split('\t')[1])
-
-    clean_xdat = []
-    for txt in xdat:
-        txt = cleaning_text(txt)
-        clean_xdat.append(txt)
-
-    print("len clean_xdat:", len(clean_xdat))
-    print("len ydat:", len(ydat))
-
-
-    return clean_xdat, ydat
-
 def load_w2v(PATH):
 
     vocab_new = []
     word_vecs_new = []
     zeros_init = [float(0.)] * 100
 
-    model = Word2Vec.load(PATH+'w2v_fasttext_sentiment.model')
+    model = Word2Vec.load('~/embeddings/w2v_fasttext_sentiment.model')
     vocab = list(model.wv.vocab)
     word_vecs = model.wv.vectors
     w2v = model.wv
 
-    print("len vocab:", len(vocab))
-    sys.stdout.flush()
-    print("vocab", vocab[:50])
-    sys.stdout.flush()
-    print("word_vecs shape:", word_vecs.shape)
-    sys.stdout.flush()
-
-    print("</s> in vocab?", '</s>' in vocab)
-    sys.stdout.flush()
-
-    print("<unk> in vocab?", '<unk>' in vocab)
-    sys.stdout.flush()
 
     if '</s>' in vocab:
         idx = vocab.index('</s>')
@@ -169,8 +132,6 @@ def load_w2v(PATH):
 
     word_vecs_new = np.array(word_vecs_new)
 
-    print("len vocab after OOV:", len(vocab_new))
-    print("word_vecs shape after OOV:", word_vecs_new.shape)
 
     return vocab_new, word_vecs_new
 
@@ -555,8 +516,8 @@ class AmazonLoader(Dataset):
 def train_model(params, model, experiment, optimizer):
 
     TEST_FILE_INDEX = 2
-    DATA_PATH = MAIN_PATH+'/data'
-    RSL_PATH = MAIN_PATH+'/results'
+    DATA_PATH = '~/data'
+    RSL_PATH = '~/results'
 
     
     train_data = get_data(params,
@@ -623,11 +584,7 @@ def train_model(params, model, experiment, optimizer):
 
 if __name__ == '__main__':
 
-    EBD_PATH = HOME_DIR+'/embeddings/'
-    RSL_PATH= HOME_DIR+'/results/'
-
-    MAIN_PATH = HOME_DIR
-
+ 
     parser = argparse.ArgumentParser(description="Training ProtoInfoMax on sentiment classification.")
     parser.add_argument('-config', help="path to configuration file", 
                         default="./config")
@@ -647,8 +604,8 @@ if __name__ == '__main__':
     print('Parameters:', params)
     sys.stdout.flush()
 
-    voc, w2v = load_w2v(MAIN_PATH)
-    word2idx, idx2word = read_pickle(EBD_PATH, 'dict_idx2word_sentiment.pkl')
+    voc, w2v = load_w2v()
+    word2idx, idx2word = read_pickle('~/data/', 'dict_idx2word_sentiment.pkl')
 
 
     params['vocabulary'] = word2idx

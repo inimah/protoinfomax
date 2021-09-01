@@ -42,7 +42,7 @@ class RunExperiment:
 
     def run_training_epoch(self, params, train_dl, optimizer, epoch):
 
-        RSL_PATH= HOME_DIR+'/results'
+        RSL_PATH= '~/results'
         
         model = self.model
         idx2word = params['idx2word']
@@ -193,7 +193,7 @@ class RunExperiment:
 
     def project_data(self, idx_, dev_dl, idx2word, epoch, str_):
 
-        RSL_PATH= HOME_DIR+'/encodeds/imax'
+        RSL_PATH= '~/encodeds/imax'
 
         model = self.model
 
@@ -205,7 +205,6 @@ class RunExperiment:
 
                     x, x_len, y, y_oh, xq, xq_len, yq, dataset = sdat['X_sup'], sdat['X_sup_len'], sdat['Y_sup'], sdat['Y_sup_oh'], sdat['X_q'], sdat['X_q_len'], sdat['Y_q'], sdat['target_set_file']
 
-                    print("dataset:", dataset)
                   
 
                     x = x.squeeze(0)
@@ -238,7 +237,7 @@ class RunExperiment:
 
     def project_data_continue(self, i, dat, domain, idx2word, epoch, str_):
 
-        RSL_PATH= HOME_DIR+'/encodeds/imaxg'
+        RSL_PATH= '~/encodeds/imaxg'
 
         model = self.model
 
