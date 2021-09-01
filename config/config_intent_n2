@@ -1,6 +1,6 @@
 [test-run]
-training_dir=../data/intent/
-training_list=../data/intent/workspace_intent
+training_dir=../data/IntentDat/train/
+training_list=../data/IntentDat/train/workspace_intent
 testing_dir=../data/intent_test2/
 testing_list=../data/intent_test2/workspace_list
 w2vfile=/home/datasets/NLP_datasets/Glove/glove.6B.100d.txt

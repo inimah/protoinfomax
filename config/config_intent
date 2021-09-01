@@ -1,10 +1,10 @@
 [test-run]
-training_dir=../data/intent/
-training_list=../data/intent/workspace_intent
-dev_dir=../data/T1/RLTest/
-testing_dir=../data/T2/RLTest/
-dev_list=../data/T1/RLTest/workspace_t1_test
-testing_list=../data/T2/RLTest/workspace_t2_test
+training_dir=../data/IntentDat/train/
+training_list=../data/IntentDat/train/workspace_intent
+dev_dir=../data/IntentDat/dev/
+testing_dir=../data/IntentDat/test/
+dev_list=../data/IntentDat/dev/workspace_t1_test
+testing_list=../data/IntentDat/test/workspace_t2_test
 w2vfile=/home/datasets/NLP_datasets/Glove/glove.6B.100d.txt
 softmax_factor=10.0
 alpha_pos=1.0
