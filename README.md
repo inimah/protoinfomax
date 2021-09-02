@@ -200,6 +200,12 @@ v_avg_conf_ood_:  0.716                             # Average confidence score f
 
 ```
 
+For summarizing the evaluation based on EER and CER metrics, run the following command. Change the code accordingly if you want to inspect the prediction outcomes based on different evaluation metrics.
+
+```
+cat LOG-FILE-TO-READ | grep 'Meta-Test\|Meta-Valid' | python src/process_results.py > ./best_score.log
+```
+
 ## GPUs
 
 Our GPU specifications for running the experiments:
