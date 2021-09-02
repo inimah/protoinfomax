@@ -49,7 +49,8 @@ Unzip the above compressed files into ~/data/
 
 #### Word embeddings
 Due to large size of the pretrained and finetuned word embeddings, we could not release our finetuned version.<br>
-For smoothly training with our implementation, run ```train_scripts/finetuning_fastext.sh``` first. The finetuned model and vocabulary will be stored in your ```~/embeddings/```.<br>
+For smoothly training with our code implementation, run ```train_scripts/finetuning_fastext.sh``` first. <br>
+The finetuned model and vocabulary will be stored in your ```~/embeddings/```.<br>
 Please be aware that storing these files will require ~6G disk space in total.<br>
 You could also use any pretrained word embeddings (e.g. GloVe), but please be advised to change the code accordingly.
 
