@@ -11,6 +11,7 @@ A Pytorch implementation
 | [Training](#training)|
 | [Evaluation](#evaluation)|
 | [Result](#result)|
+| [GPU Specs](#gpu)|
 | [Citation](#citation)|
 
 ## HowTo
@@ -167,6 +168,12 @@ For running the scripts under different configuration set-ups, change parameters
 | ProtoInfoMax++                                       | Intent Classification    |  eval_scripts/eval_protoinfomax_kws_intent.sh                      |
 
 ## Result
+
+## GPU
+
+Our GPU specifications for running the experiments:
+- 4 GPUs ASUS Turbo GeForce GTX 1080 Ti (11GB RAM, 3584 CUDA cores, compute capability 6.1). 2 CPUs Intel Xeon 4110 @ 2.1Ghz (32 hyperthreads, RAM: 384GB).
+- 4 GPUs Nvidia Tesla V100 (16GB RAM, 2560 tensor cores, 10480 CUDA cores, compute capability 7.0). 1 CPU Intel Xeon E5-2698v4 @ 2.2GHz (40 hyperthreads, RAM: 256GB).
 
 ## Citation
 
