@@ -156,6 +156,9 @@ For running the scripts under different configuration set-ups, change parameters
 
 ## Evaluation
 
+These evaluation scripts read the stored models per epoch basis ```{0, 10, 20, 30, 40, 50, 60}```, including the ```best``` models. <br>
+The log summary of the evaluation will be stored in pickle format ```\results\metaxxx*.pkl``` and text format ```\src\eval_xxx*.txt```.
+
 | Model                                                |  Benchmark               |   Bash script                                                |
 | ---------------------------------------------------- | ------------------------ | ------------------------------------------------------------ |
 | ProtoNet                                             | Sentiment Classification |  eval_scripts/eval_protonet_sentiment.sh                           |
@@ -168,6 +171,40 @@ For running the scripts under different configuration set-ups, change parameters
 | ProtoInfoMax++                                       | Intent Classification    |  eval_scripts/eval_protoinfomax_kws_intent.sh                      |
 
 ## Results
+
+An example of log summary resulted from evaluation.
+
+On meta-validation set for sentiment classification benchmark.
+
+```
+stored epoch: 0                                      # Display results from model stored at epoch-i
+len dev_set: 4                                      # Number of domains in meta-validation tasks 
+
+...
+thesholds best: 0.8613675832748413                  # Chosen best threshold (tau)
+
+test(eer, far, frr, ontopic_acc_ideal, ontopic_acc) 0.379, 0.375, 0.380, 0.640, 0.385
+eer, onacc_ideal, onacc: 0.379, 0.640, 0.385
+
+v_avg_conf_ood:  0.712                              # Average confidence score for Out-of-Domain examples
+
+ file saved to: PATH/metaval_imax_cls_3_0.pkl       # EER, CER stored for domain-i=3 and epoch=0
+ file saved to: PATH/vprobs_gts_imax_cls_3_0.pkl    # prediction outcomes (confidence score) for domain-i=3 and epoch=0
+ 
+Meta-Valid Macro(eer, onacc_ideal, onacc): 0.373, 0.649, 0.408
+
+v_avg_conf_ood_:  0.716                             # Average confidence score for Out-of-Domain examples over 4 domains in meta-validation set
+
+ file saved to: PATH/metavalid_imax_cls_all_0.pkl   # EER, CER stored for all domains in meta-validation set
+ file saved to: PATH/vprobs_gts_imax_cls_all_0.pkl  # prediction outcomes (confidence score) for all domains in meta-validation set
+
+```
+
+For summarizing the evaluation based on EER and CER metrics, run the following command. Change the code accordingly if you want to inspect the prediction outcomes based on different evaluation metrics.
+
+```
+cat LOG-FILE-TO-READ | grep 'Meta-Test\|Meta-Valid' | python src/process_results.py > ./best_score.log
+```
 
 ## GPUs
 
