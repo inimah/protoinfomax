@@ -48,10 +48,9 @@ AI conversational data (intent classification): [>>to-download](https://drive.go
 Unzip the above compressed files into ~/data/
 
 #### Word embeddings
-FastText Pretrained Binary (English), Finetuned FastText on Sentiment, Finetuned FastText on Intent are available at [>>to-view](https://console.cloud.google.com/storage/browser/pretrained_finetuned_embeddings)<br />
-
-Download all above pretrained embeddings into ~/embeddings/.
-Alternatively, you could use the available FastText pretrained binary (dim output=100) and finetuning it.
+Due to large size of the pretrained and finetuned word embeddings, we could not release our finetuned version.<br>
+For smoothly training with our implementation, run ```train_scripts/finetuning_fastext.sh``` first. The finetuned model and vocabulary will be stored in your ```~/embeddings/```.<br>
+Please be aware that storing these files will require ~6G disk space in total.<br>
 You could also use any pretrained word embeddings (e.g. GloVe), but please be advised to change the code accordingly.
 
 #### NLTK library
