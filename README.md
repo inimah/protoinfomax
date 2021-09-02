@@ -10,20 +10,22 @@ A Pytorch implementation
 | [Data](#data)|
 | [Training](#training)|
 | [Evaluation](#evaluation)|
-| [Result](#result)|
+| [Results](#results)|
+| [GPU Specs](#gpus)|
 | [Citation](#citation)|
 
 ## HowTo
 1. Clone or download the current git repo
-2. Create directory ~/data/ ```mkdir -p data```
-3. Create directory ~/embeddings/ ```mkdir -p embeddings```
-4. Install dependencies: [>>Setup](#setup)
-5. Download preprocessed data sets: [>>Data](#data)
-6. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
-7. Run training script: [>>Training](#training)
-8. Run evaluation script: [>>Evaluation](#evaluation)
-9. Read log summary: [>>Result](#result)
-10. Additional: See notebooks for investigating model reliability
+2. Get into the main directory ```cd protoinfomax```
+3. Create directory ~/data/ ```mkdir -p data```
+4. Create directory ~/embeddings/ ```mkdir -p embeddings```
+5. Install dependencies: [>>Setup](#setup)
+6. Download preprocessed data sets: [>>Data](#data)
+7. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
+8. Run training script: [>>Training](#training)
+9. Run evaluation script: [>>Evaluation](#evaluation)
+10. Read log summary: [>>Result](#result)
+11. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
@@ -47,11 +49,15 @@ AI conversational data (intent classification): [>>to-download](https://drive.go
 Unzip the above compressed files into ~/data/
 
 #### Word embeddings
-FastText Pretrained Binary (English): [>>to-download](#)<br />
-Finetuned FastText on Sentiment: [>>to-download](#)<br />
-Finetuned FastText on Intent: [>>to-download](#)<br />
+Due to large size of the pretrained and finetuned word embeddings, we could not release our finetuned version.<br>
+For smoothly training with our code implementation:
+1. Download English vector 100-dim from fasttext.cc. See [https://fasttext.cc/docs/en/crawl-vectors.html](https://fasttext.cc/docs/en/crawl-vectors.html). Located it in ```~/embeddings/```.
+2. Run ```prep_scripts/finetuning_fastext.sh```.
+3. The finetuned model and vocabulary will be stored in your ```~/embeddings/```.
 
-Unzip the above compressed word embeddings into ~/embeddings/
+Please be aware that storing these files will require ~6GB disk space in total.<br>
+
+You could also use any pretrained word embeddings (e.g. GloVe), but please be advised to change the code accordingly.
 
 #### NLTK library
 Before running the script, make sure that you have downloaded nltk_data in your home directory. Our code is based on manual installation of nltk_data.
@@ -121,7 +127,7 @@ IntentDat
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, run the following script on your data.<br />
-```prep/extract_keywords.sh```<br />
+```prep_scripts/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
@@ -161,7 +167,13 @@ For running the scripts under different configuration set-ups, change parameters
 | ProtoInfoMax++                                       | Sentiment Classification |  eval_scripts/eval_protoinfomax_kws_sentiment.sh                   |
 | ProtoInfoMax++                                       | Intent Classification    |  eval_scripts/eval_protoinfomax_kws_intent.sh                      |
 
-## Result
+## Results
+
+## GPUs
+
+Our GPU specifications for running the experiments:
+- 4 GPUs ASUS Turbo GeForce GTX 1080 Ti (11GB RAM, 3584 CUDA cores, compute capability 6.1). 2 CPUs Intel Xeon 4110 @ 2.1Ghz (32 hyperthreads, RAM: 384GB).
+- 4 GPUs Nvidia Tesla V100 (16GB RAM, 2560 tensor cores, 10480 CUDA cores, compute capability 7.0). 1 CPU Intel Xeon E5-2698v4 @ 2.2GHz (40 hyperthreads, RAM: 256GB).
 
 ## Citation
 
