@@ -53,7 +53,7 @@ For smoothly training with our code implementation:
 1. Download English vector 100-dim from fasttext.cc. See [https://fasttext.cc/docs/en/crawl-vectors.html](https://fasttext.cc/docs/en/crawl-vectors.html). Located it in ```~/embeddings/```.
 2. Run ```train_scripts/finetuning_fastext.sh```.
 3. The finetuned model and vocabulary will be stored in your ```~/embeddings/```.
-4. 
+
 Please be aware that storing these files will require ~6GB disk space in total.<br>
 
 You could also use any pretrained word embeddings (e.g. GloVe), but please be advised to change the code accordingly.
