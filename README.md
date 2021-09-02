@@ -156,7 +156,7 @@ For running the scripts under different configuration set-ups, change parameters
 
 ## Evaluation
 
-These evaluation scripts read the stored models per epoch basis ````{0, 10, 20, 30, 40, 50, 60}```, including the ```best``` models. <br>
+These evaluation scripts read the stored models per epoch basis ```{0, 10, 20, 30, 40, 50, 60}```, including the ```best``` models. <br>
 The log summary of the evaluation will be stored in pickle format ```\results\metaxxx*.pkl``` and text format ```\src\eval_xxx*.txt```.
 
 | Model                                                |  Benchmark               |   Bash script                                                |
