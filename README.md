@@ -11,7 +11,7 @@ A Pytorch implementation
 | [Training](#training)|
 | [Evaluation](#evaluation)|
 | [Result](#result)|
-| [GPU Specs](#gpu)|
+| [GPU Specs](#gpus)|
 | [Citation](#citation)|
 
 ## HowTo
@@ -169,7 +169,7 @@ For running the scripts under different configuration set-ups, change parameters
 
 ## Result
 
-## GPU
+## GPUs
 
 Our GPU specifications for running the experiments:
 - 4 GPUs ASUS Turbo GeForce GTX 1080 Ti (11GB RAM, 3584 CUDA cores, compute capability 6.1). 2 CPUs Intel Xeon 4110 @ 2.1Ghz (32 hyperthreads, RAM: 384GB).
