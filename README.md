@@ -10,7 +10,7 @@ A Pytorch implementation
 | [Data](#data)|
 | [Training](#training)|
 | [Evaluation](#evaluation)|
-| [Result](#result)|
+| [Results](#results)|
 | [GPU Specs](#gpus)|
 | [Citation](#citation)|
 
@@ -52,7 +52,7 @@ Unzip the above compressed files into ~/data/
 Due to large size of the pretrained and finetuned word embeddings, we could not release our finetuned version.<br>
 For smoothly training with our code implementation:
 1. Download English vector 100-dim from fasttext.cc. See [https://fasttext.cc/docs/en/crawl-vectors.html](https://fasttext.cc/docs/en/crawl-vectors.html). Located it in ```~/embeddings/```.
-2. Run ```train_scripts/finetuning_fastext.sh```.
+2. Run ```prep_scripts/finetuning_fastext.sh```.
 3. The finetuned model and vocabulary will be stored in your ```~/embeddings/```.
 
 Please be aware that storing these files will require ~6GB disk space in total.<br>
@@ -127,7 +127,7 @@ IntentDat
 
 If you want to use your own data, please follow the data structure exemplified in the above data.<br />
 For preparing your own data with keyword auxiliaries, run the following script on your data.<br />
-```prep/extract_keywords.sh```<br />
+```prep_scripts/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
 
 ## Training
@@ -167,7 +167,7 @@ For running the scripts under different configuration set-ups, change parameters
 | ProtoInfoMax++                                       | Sentiment Classification |  eval_scripts/eval_protoinfomax_kws_sentiment.sh                   |
 | ProtoInfoMax++                                       | Intent Classification    |  eval_scripts/eval_protoinfomax_kws_intent.sh                      |
 
-## Result
+## Results
 
 ## GPUs
 
