@@ -15,7 +15,7 @@ A Pytorch implementation
 
 ## HowTo
 1. Clone or download the current git repo
-2. ```cd protoinfomax```
+2. Get into the main directory ```cd protoinfomax```
 3. Create directory ~/data/ ```mkdir -p data```
 4. Create directory ~/embeddings/ ```mkdir -p embeddings```
 5. Install dependencies: [>>Setup](#setup)
