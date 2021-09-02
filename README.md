@@ -15,15 +15,16 @@ A Pytorch implementation
 
 ## HowTo
 1. Clone or download the current git repo
-2. Create directory ~/data/ ```mkdir -p data```
-3. Create directory ~/embeddings/ ```mkdir -p embeddings```
-4. Install dependencies: [>>Setup](#setup)
-5. Download preprocessed data sets: [>>Data](#data)
-6. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
-7. Run training script: [>>Training](#training)
-8. Run evaluation script: [>>Evaluation](#evaluation)
-9. Read log summary: [>>Result](#result)
-10. Additional: See notebooks for investigating model reliability
+2. ```cd protoinfomax```
+3. Create directory ~/data/ ```mkdir -p data```
+4. Create directory ~/embeddings/ ```mkdir -p embeddings```
+5. Install dependencies: [>>Setup](#setup)
+6. Download preprocessed data sets: [>>Data](#data)
+7. Before running bash scripts (\*.sh) from our repo, do not forget to: <br> ```Change the second line in the bash file into the path location where you installed anaconda or miniconda```
+8. Run training script: [>>Training](#training)
+9. Run evaluation script: [>>Evaluation](#evaluation)
+10. Read log summary: [>>Result](#result)
+11. Additional: See notebooks for investigating model reliability
 
 ## Setup
 ### Dependencies
