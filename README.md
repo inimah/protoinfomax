@@ -172,6 +172,21 @@ The log summary of the evaluation will be stored in pickle format ```\results\me
 
 ## Results
 
+An example of log summary resulted from evaluation.
+```
+thesholds best: 0.8613675832748413
+test(eer, far, frr, ontopic_acc_ideal, ontopic_acc) 0.379, 0.375, 0.380, 0.640, 0.385
+eer, onacc_ideal, onacc: 0.379, 0.640, 0.385
+v_avg_conf_ood:  0.712
+ file saved to: PATH/metaval_imax_cls_3_0.pkl
+ file saved to: PATH/vprobs_gts_imax_cls_3_0.pkl
+Meta-Valid Macro(eer, onacc_ideal, onacc): 0.373, 0.649, 0.408
+v_avg_conf_ood_:  0.716
+ file saved to: PATH/metavalid_imax_cls_all_0.pkl
+ file saved to: PATH/vprobs_gts_imax_cls_all_0.pkl
+
+```
+
 ## GPUs
 
 Our GPU specifications for running the experiments:
