@@ -48,11 +48,11 @@ AI conversational data (intent classification): [>>to-download](https://drive.go
 Unzip the above compressed files into ~/data/
 
 #### Word embeddings
-FastText Pretrained Binary (English): [>>to-download](#)<br />
-Finetuned FastText on Sentiment: [>>to-download](#)<br />
-Finetuned FastText on Intent: [>>to-download](#)<br />
+FastText Pretrained Binary (English), Finetuned FastText on Sentiment, Finetuned FastText on Intent are available at [>>to-view](https://console.cloud.google.com/storage/browser/pretrained_finetuned_embeddings)<br />
 
-Unzip the above compressed word embeddings into ~/embeddings/
+Download all above pretrained embeddings into ~/embeddings/.
+Alternatively, you could use the available FastText pretrained binary (dim output=100) and finetuning it.
+You could also use any pretrained word embeddings (e.g. GloVe), but please be advised to change the code accordingly.
 
 #### NLTK library
 Before running the script, make sure that you have downloaded nltk_data in your home directory. Our code is based on manual installation of nltk_data.
