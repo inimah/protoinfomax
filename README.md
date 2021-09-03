@@ -217,7 +217,13 @@ Our GPU specifications for running the experiments:
 Please cite our paper if you find this repo useful :)
 
 ```BibTeX
-to-be-added
+to-be-updated
+
+@inproceedings{Nimah2021ProtoInfoMaxPN,
+  title={ProtoInfoMax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection},
+  author={Iftitahu Ni'mah and Meng Fang and Vlado Menkovski and Mykola Pechenizkiy},
+  year={2021}
+}
 ```
 
 ----
