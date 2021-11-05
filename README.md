@@ -125,7 +125,7 @@ IntentDat
 
 ### Custom Data
 
-If you want to use your own data, please follow the data structure exemplified in the above data.<br />
+If you want to use your own data, please follow the data structure exemplified in the above data structure.<br />
 For preparing your own data with keyword auxiliaries, run the following script on your data.<br />
 ```prep_scripts/extract_keywords.sh```<br />
 Note that in the above script, we utilize TfIdf keyword extractor. If you want to use your own keyword extraction method (e.g. topic model, deep keyword generator), please follow structure exemplified by Kws_xxx.train. <br />
@@ -216,13 +216,23 @@ Our GPU specifications for running the experiments:
 
 Please cite our paper if you find this repo useful :)
 
-#### To-be-updated
+
 
 ```BibTeX
-@inproceedings{Nimah2021ProtoInfoMaxPN,
-  title={ProtoInfoMax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection},
-  author={Iftitahu Ni'mah and Meng Fang and Vlado Menkovski and Mykola Pechenizkiy},
-  year={2021}
+@inproceedings{nimah-etal-2021-protoinfomax-prototypical,
+    title = "{P}roto{I}nfo{M}ax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection",
+    author = "Nimah, Iftitahu  and
+      Fang, Meng  and
+      Menkovski, Vlado  and
+      Pechenizkiy, Mykola",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2021",
+    month = nov,
+    year = "2021",
+    address = "Punta Cana, Dominican Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.findings-emnlp.138",
+    pages = "1606--1617",
+    abstract = "The ability to detect Out-of-Domain (OOD) inputs has been a critical requirement in many real-world NLP applications. For example, intent classification in dialogue systems. The reason is that the inclusion of unsupported OOD inputs may lead to catastrophic failure of systems. However, it remains an empirical question whether current methods can tackle such problems reliably in a realistic scenario where zero OOD training data is available. In this study, we propose ProtoInfoMax, a new architecture that extends Prototypical Networks to simultaneously process in-domain and OOD sentences via Mutual Information Maximization (InfoMax) objective. Experimental results show that our proposed method can substantially improve performance up to 20{\%} for OOD detection in low resource settings of text classification. We also show that ProtoInfoMax is less prone to typical overconfidence errors of Neural Networks, leading to more reliable prediction results.",
 }
 ```
 
