@@ -1,7 +1,7 @@
 # ProtoInfoMax
 Code and Data sets for the EMNLP-2021-Findings Paper "ProtoInfoMax: Prototypical Networks with Mutual Information Maximization for Out-of-Domain Detection"
 
-A Pytorch implementation
+A Pytorch implementation. Metrics, data preprocessing, training, and evaluation were adopted from https://github.com/SLAD-ml/few-shot-ood (Tensorflow ver.)
 
 | Table of Contents |
 |-|
