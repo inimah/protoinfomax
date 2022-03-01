@@ -463,7 +463,6 @@ def extract_kws(PATH, domain, params):
     fn = os.path.splitext(base)[0]
 
     np.savetxt('~/data/Amazondat/train/Kws_%s.train'%fn, df.values, fmt='%s', delimiter='\t')
-Amazondat/
 
 
 
