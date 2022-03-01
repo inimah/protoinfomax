@@ -7,3 +7,4 @@ nltk==3.2.5
 torchtext==0.8.1
 spacy==2.3.5
 fasttext
+wikipedia2vec
